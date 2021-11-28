@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MyTest05 {
 
-    String config = "ba05/spring-total.xml";
+    String config = "ba05/total.xml";
 
     @Test
     public void test() {

@@ -4,6 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--多个配置文件汇总-->
-    <import resource="spring-school.xml"/>
-    <import resource="spring-student.xml"/>
+<!--    <import resource="spring-school.xml"/>-->
+<!--    <import resource="spring-student.xml"/>-->
+
+    <!--使用*来表示classpath下的所有spring-开头的配置文件-->
+    <import resource="spring-*.xml"/>
 </beans>
