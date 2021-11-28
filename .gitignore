@@ -1,1 +1,3 @@
 /.idea/
+/ch01-hello-spring/target/
+/ch02-di-xml/target/
