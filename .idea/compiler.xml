@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ch02-di-xml" />
         <module name="ch01-hello-spring" />
+        <module name="ch04-di-anno" />
       </profile>
     </annotationProcessing>
   </component>

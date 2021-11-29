@@ -11,6 +11,7 @@
   <modules>
     <module>ch01-hello-spring</module>
     <module>ch02-di-xml</module>
+      <module>ch04-di-anno</module>
   </modules>
 
   <name>spring5</name>
