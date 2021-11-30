@@ -1,5 +1,6 @@
 package com.bgpn.ba01;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  */
 @Component(value = "myStudent")
 public class Student {
+    @Value("${name}")
     private String name;
     private Integer age;
 
