@@ -52,6 +52,10 @@ public class MyAspect {
         System.out.println(Arrays.toString(jp.getArgs()));
     }
 
+    /**
+     * 后置通知
+     * @param res
+     */
     @AfterReturning(value = "execution(public Student doReturn(String ,Integer))",returning="res")
     public void myAfter(Object res) {
         /**
