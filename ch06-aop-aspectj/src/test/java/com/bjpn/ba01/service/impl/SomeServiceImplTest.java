@@ -8,6 +8,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SomeServiceImplTest{
     String config = "application-context.xml";
 
+    /**
+     * 前置通知
+     */
     @Test
     public void test01() {
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
@@ -16,6 +19,9 @@ public class SomeServiceImplTest{
         System.out.println(someServiceProxy.getClass().getName());
     }
 
+    /**
+     * 后置通知
+     */
     @Test
     public void test02() {
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
@@ -24,6 +30,9 @@ public class SomeServiceImplTest{
         System.out.println("方法调用点的线程：" + Thread.currentThread().getName());
     }
 
+    /**
+     * 环绕通知
+     */
     @Test
     public void test03() {
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
