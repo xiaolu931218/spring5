@@ -15,4 +15,12 @@ public class SomeServiceImplTest{
         someServiceProxy.doSome("张三", 19);
         System.out.println(someServiceProxy.getClass().getName());
     }
+
+    @Test
+    public void test02() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext(config);
+        SomeService someServiceProxy = (SomeService) ac.getBean("someService");
+        System.out.println("方法调用点返回的对象：" + someServiceProxy.doReturn("张三", 19));
+        System.out.println("方法调用点的线程：" + Thread.currentThread().getName());
+    }
 }

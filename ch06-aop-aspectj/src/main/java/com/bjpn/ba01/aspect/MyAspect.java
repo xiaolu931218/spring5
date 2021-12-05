@@ -1,6 +1,7 @@
 package com.bjpn.ba01.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
@@ -42,13 +43,27 @@ public class MyAspect {
          */
         System.out.println("切面功能：前置通知，在目标方法执行前输出当前时间》》》"+ LocalDateTime.now());
         // 切点方法的签名void com.bjpn.ba01.service.SomeService.doSome(String,Integer)
-        System.out.println(jp.getSignature());;
+        System.out.println(jp.getSignature());
         // 切点方法的所在类 com.bjpn.ba01.service.impl.SomeServiceImpl@491b9b8
-        System.out.println(jp.getThis());;
+        System.out.println(jp.getThis());
         // 切点方法的名称 doSome
-        System.out.println(jp.getSignature().getName());;
+        System.out.println(jp.getSignature().getName());
         // 切点方法的实参 [张三, 19]
-        System.out.println(Arrays.toString(jp.getArgs()));;
+        System.out.println(Arrays.toString(jp.getArgs()));
+    }
+
+    @AfterReturning(value = "execution(public Student doReturn(String ,Integer))",returning="res")
+    public void myAfter(Object res) {
+        /**
+         * 切面要执行的功能代码
+         */
+        System.out.println("切面功能：后置通知，在目标方法执行后获取返回值》》》" + res);
+//        Student student = (Student) res;
+//        // 这里测试切面修改返回值，是否会对调用点有影响。答案：会
+//        student.setName("李四");
+        // 这里测试切面修改返回值，是否会对调用点有影响。答案：否
+        res = new Student("lisi", 18);
+        System.out.println("切面功能的线程》》》" +Thread.currentThread().getName());
     }
 
 }
