@@ -6,4 +6,6 @@ public interface SomeService {
     void doSome(String name,Integer age);
 
     Student doReturn(String name, Integer age);
+
+    Student doFirst(String name, Integer age);
 }

@@ -1,7 +1,9 @@
 package com.bjpn.ba01.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
@@ -68,6 +70,27 @@ public class MyAspect {
         // 这里测试切面修改返回值，是否会对调用点有影响。答案：否
         res = new Student("lisi", 18);
         System.out.println("切面功能的线程》》》" +Thread.currentThread().getName());
+    }
+
+    /**
+     * 环绕通知
+     */
+    @Around(value = "execution(public Student doFirst(String ,Integer))")
+    public Student myAround(ProceedingJoinPoint pjp) throws Throwable {
+
+        // 目标方法执行前
+        System.out.println("切面功能：环绕通知，在目标方法执行前打印时间》》》" + LocalDateTime.now());
+
+        // 执行目标方法
+        Student student = (Student)pjp.proceed();
+        System.out.println("目标方法执行获取的对象：" + student);
+
+        // 目标方法执行后
+        if (student.getAge() > 10) {
+            student = new Student("无名", 10);
+        }
+        System.out.println("环绕通知处理后后的对象" + student);
+        return student;
     }
 
 }
