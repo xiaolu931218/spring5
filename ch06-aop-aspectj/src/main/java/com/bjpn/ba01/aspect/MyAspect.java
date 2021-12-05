@@ -1,9 +1,11 @@
 package com.bjpn.ba01.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 /**
  * @Aspect：是aspectJ框架中注解
@@ -34,11 +36,19 @@ public class MyAspect {
      *  3、不会影响目标方法的执行
      */
     @Before(value = "execution(public void doSome(String ,Integer ))")
-    public void myBefore() {
+    public void myBefore(JoinPoint jp) {
         /**
          * 切面要执行的功能代码
          */
         System.out.println("切面功能：前置通知，在目标方法执行前输出当前时间》》》"+ LocalDateTime.now());
+        // 切点方法的签名void com.bjpn.ba01.service.SomeService.doSome(String,Integer)
+        System.out.println(jp.getSignature());;
+        // 切点方法的所在类 com.bjpn.ba01.service.impl.SomeServiceImpl@491b9b8
+        System.out.println(jp.getThis());;
+        // 切点方法的名称 doSome
+        System.out.println(jp.getSignature().getName());;
+        // 切点方法的实参 [张三, 19]
+        System.out.println(Arrays.toString(jp.getArgs()));;
     }
 
 }
